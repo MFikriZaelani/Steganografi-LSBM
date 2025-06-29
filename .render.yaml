@@ -2,7 +2,6 @@ services:
   - type: web
     name: steganografi-flask
     env: python
-    buildCommand: ""
     startCommand: python app.py
     envVars:
       - key: FLASK_ENV
