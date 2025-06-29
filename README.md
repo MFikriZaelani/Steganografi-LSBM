@@ -47,7 +47,7 @@ Steganografi-LSBM/
 ## 🧪 Local Development
 
 ```bash
-git clone https://github.com/yourusername/Steganografi-LSBM.git
+git clone https://github.com/MFikriZaelani/Steganografi-LSBM.git
 cd Steganografi-LSBM
 pip install -r requirements.txt
 python app.py
