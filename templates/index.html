@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LSBM Steganografi</title>
+    <link
+      rel="icon"
+      type="image/png"
+      href="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f6e1.png"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <h1
+        style="
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 12px;
+        "
+      >
+        <span style="display: inline-block; vertical-align: middle">
+          <svg
+            width="38"
+            height="38"
+            viewBox="0 0 48 48"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect width="48" height="48" rx="12" fill="#23272f" />
+            <path
+              d="M24 10L38 16V24C38 33 24 38 24 38C24 38 10 33 10 24V16L24 10Z"
+              fill="#e5e7eb"
+              stroke="#6366f1"
+              stroke-width="2"
+            />
+            <circle cx="24" cy="24" r="5" fill="#6366f1" />
+          </svg>
+        </span>
+        Alat Steganografi LSBM
+      </h1>
+      <p>Sisipkan atau ekstrak pesan rahasia di dalam gambar</p>
+    </header>
+
+    <main class="frame-container">
+      <div class="container">
+        <div class="mode-buttons center-buttons">
+          <button onclick="showEmbed()">Mode Sisipkan</button>
+          <button onclick="showExtract()">Mode Ekstrak</button>
+        </div>
+
+        <div id="embed-section">
+          <section class="section">
+            <label for="original-image">Unggah Gambar Asli</label>
+            <div id="drop-area-original" class="drop-area">
+              <input
+                type="file"
+                id="original-image"
+                accept="image/png"
+                style="display: none"
+              />
+              <label for="original-image" class="custom-upload-button"
+                >📁 Pilih file ...</label
+              >
+              <div class="drop-text">
+                atau <span>seret & lepas file PNG ke sini</span>
+              </div>
+            </div>
+            <small style="color: #888; display: block; margin-top: 4px"
+              >* Hanya file PNG yang diperbolehkan</small
+            >
+          </section>
+
+          <section class="section">
+            <label for="message">Pesan Rahasia</label>
+            <textarea
+              id="message"
+              placeholder="Ketik pesan rahasia Anda di sini..."
+            ></textarea>
+          </section>
+
+          <section class="section center-buttons">
+            <button onclick="embedMessage()">Sisipkan Pesan</button>
+          </section>
+
+          <section class="image-preview-frame">
+            <p><strong>Pratinjau Thumbnail</strong></p>
+            <div class="thumbnail-preview">
+              <img id="embed-stego" src="" alt="Gambar Setelah Disisipkan" style="display:none;" />
+              <div id="embed-stego-placeholder" class="thumbnail-placeholder">
+                <svg width="36" height="36" fill="none" viewBox="0 0 24 24">
+                  <rect width="24" height="24" rx="6" fill="#e5e7eb"/>
+                  <path d="M7 17l5-5 5 5" stroke="#bfc5ce" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <circle cx="12" cy="10" r="3" stroke="#bfc5ce" stroke-width="2"/>
+                </svg>
+                <span>Belum ada gambar<br>Unggah gambar untuk pratinjau</span>
+              </div>
+            </div>
+            <div class="download-wrapper">
+              <a id="download-stego" href="#" download="stego-image.png">
+                <button class="download-button">Unduh Gambar</button>
+              </a>
+            </div>
+          </section>
+        </div>
+        <div id="extract-section" class="hidden">
+          <section class="section">
+            <label for="secret-image"
+              >Unggah Gambar Rahasia (untuk Ekstrak)</label
+            >
+            <div id="drop-area-secret" class="drop-area">
+              <input
+                type="file"
+                id="secret-image"
+                accept="image/png"
+                style="display: none"
+              />
+              <label for="secret-image" class="custom-upload-button"
+                >📁 Pilih file ...</label
+              >
+              <div class="drop-text">
+                atau <span>seret & lepas file PNG ke sini</span>
+              </div>
+            </div>
+            <small style="color: #888; display: block; margin-top: 4px"
+              >* Hanya file PNG yang diperbolehkan</small
+            >
+          </section>
+
+          <section class="section">
+            <section class="section center-buttons">
+              <button onclick="extractMessage()">Ekstrak Pesan</button>
+            </section>
+            <div class="message-box">
+              <p><strong>Pesan Rahasia:</strong></p>
+              <p id="extracted-message" class="extracted-message-box"></p>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </body>
+</html>
