@@ -18,11 +18,10 @@ A simple Flask-based web application to embed and extract secret messages in ima
 
 ## 🚀 Live Demo
 
-Visit on Render: [https://your-app-name.onrender.com](https://your-app-name.onrender.com)  
-> *(Replace with your actual Render link after deployment)*
+Visit on Railway: [https://web-production-fb184.up.railway.app/](https://web-production-fb184.up.railway.app/)  
 
 ## 📁 Project Structure
-.
+```
 ├── app.py # Main Flask app
 ├── stego.py # LSBM embed/extract logic
 ├── templates/
@@ -30,19 +29,21 @@ Visit on Render: [https://your-app-name.onrender.com](https://your-app-name.onre
 ├── upload/
 ├── requirements.txt
 └── .render.yaml
+```
 
-
-## ⚙️ Deployment (Render.com)
+## ⚙️ Deployment to Railway
 
 1. Push project to GitHub
-2. Go to [https://render.com](https://render.com)
-3. Create new Web Service → connect GitHub repo
-4. Render will auto-detect your `.render.yaml`
+2. Go to [https://railway.app](https://railway.app)
+3. Create new project
+4. Add a `Procfile` if not detected
 5. Wait for build & access your public URL 🎉
 
 ## 🧪 Local Development
 
 ```bash
+git clone https://github.com/yourusername/Steganografi-LSBM.git
+cd Steganografi-LSBM
 pip install -r requirements.txt
 python app.py
 Then open: http://localhost:5000
@@ -50,6 +51,7 @@ Then open: http://localhost:5000
 ## 📌 Notes
 - Only PNG images are fully supported (JPG may cause decoding errors)
 - Do not use lossy-compressed images for embedding
+- Folder upload/ is auto-created for saving images
 
 ## 📃 License
 Free to use for educational purposes.
