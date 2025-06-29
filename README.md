@@ -22,13 +22,18 @@ Visit on Railway: [https://web-production-fb184.up.railway.app/](https://web-pro
 
 ## 📁 Project Structure
 ```
+Steganografi-LSBM/
 ├── app.py # Main Flask app
-├── stego.py # LSBM embed/extract logic
+├── stego.py # Contains embed_lsbm & extract_lsbm functions
+├── requirements.txt # Dependencies: Flask & Pillow
+├── Procfile # Railway deployment command
 ├── templates/
+│ └── index.html # HTML interface
 ├── static/
-├── upload/
-├── requirements.txt
-└── .render.yaml
+│ ├── style.css # Styling
+│ └── script.js # Client-side logic
+├── upload/ # Folder for uploaded & output images
+└── README.md
 ```
 
 ## ⚙️ Deployment to Railway
